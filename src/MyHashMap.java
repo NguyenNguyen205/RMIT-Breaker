@@ -4,6 +4,7 @@ package src;
 class MyHashMap {
     int N; // size of the array for the hash table
     PairList<String, Integer>[] hashTable;
+    MySet keys;
 
     public MyHashMap(int tableSize) {
         N = tableSize;
@@ -25,13 +26,21 @@ class MyHashMap {
         return res % N;
     }
 
+    String[] keySet() {
+        return keys.getKeys();
+    }
+
     boolean put(Pair<String, Integer> p) {
         int hash = hashString(p.key);
         // no list at this location?
         if (hashTable[hash] == null) {
             hashTable[hash] = new PairList<>();
         }
-        return hashTable[hash].insert(p);
+        boolean res = hashTable[hash].insert(p);
+        if (res) {
+            keys.put(p.key);
+        }
+        return res;
     }
 
     // Pair<String, Integer> get(String studentId) {
@@ -55,7 +64,11 @@ class MyHashMap {
         if (hashTable[hash] == null) {
             return false;
         }
-        return hashTable[hash].remove(studentId);
+        boolean res = hashTable[hash].remove(studentId);
+        if (res) {
+            keys.remove(studentId);
+        }
+        return res;
     }
 }
 
