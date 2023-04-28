@@ -1,6 +1,5 @@
 package src;
 
-import java.util.Arrays;
 
 public class MySet {
     int N; // size of the array for the hash table

@@ -9,6 +9,7 @@ class MyHashMap {
     public MyHashMap(int tableSize) {
         N = tableSize;
         hashTable = new PairList[N];
+        keys = new MySet(tableSize);
     }
 
     int hashCharacter(char c) {
@@ -41,6 +42,13 @@ class MyHashMap {
             keys.put(p.key);
         }
         return res;
+    }
+
+    boolean put(String key, Integer value) {
+        Pair<String, Integer> mid = new Pair(key, value);
+        // System.out.println(mid.key);
+
+        return put(mid);
     }
 
     // Pair<String, Integer> get(String studentId) {

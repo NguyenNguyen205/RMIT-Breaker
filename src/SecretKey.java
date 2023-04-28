@@ -5,11 +5,11 @@ public class SecretKey {
   private int counter;
 
   public SecretKey() {
-    // for the real test, your program will not know this
-    correctKey = "MMMMTIIIRRRRMMMM";
+    // for the real test, your program will not know this (sure)
+    correctKey = "TRITRMITRMITRMIT";
     counter = 0;
   }
-
+  
   public int guess(String guessedKey) {
     counter++;
     // validation
