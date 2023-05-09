@@ -12,7 +12,6 @@ public class SecretKeyGuesser {
       // guess the word key guessing
       SecretKey key = new SecretKey();
       // set up
-      // potential = new HashMap<>();
       potential = new MyHashMap(20);
       found = false;
       nums = new int[4];
@@ -44,7 +43,6 @@ public class SecretKeyGuesser {
 
       // run through the permutations
       permutate(chars, taken, temp, 0);
-      // permutate(chars, 0);
       found = false;
       return chosen;
     }  
@@ -96,28 +94,6 @@ public class SecretKeyGuesser {
       }
       return true;
   }
-
-  static void permutate(char str[], int pos) {
-      if (found) return;
-      // might need to change condition back to if pos >= n
-      if (pos == str.length) { 
-          process(String.valueOf(str));
-          return;
-      }
-
-      for (int i = pos; i < str.length; i++) {
-
-          if (!checkSwap(str, pos, i)) continue;
-          mid = str[pos];
-          str[pos] = str[i];
-          str[i] = mid;
-          permutate(str, pos + 1);
-          mid = str[pos];
-          str[pos] = str[i];
-          str[i] = mid;
-      }
-  }
-
 
     // check similarity between 2 words
     static int matches(String word, String another) {
